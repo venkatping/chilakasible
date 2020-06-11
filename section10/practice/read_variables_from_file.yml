@@ -1,0 +1,19 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  vars_files:
+          - variables.yml
+  tasks:
+          - name: Displaying variables from a file
+            debug:
+                    msg:
+                            
+                         - "The value of x is: {{x}}"
+                         - "The value of y is: {{y}}"
+                         - "The values in Variable A is: {{a}}"
+                         - "The number of linux falvours: {{pkgs}}"
+
+
+

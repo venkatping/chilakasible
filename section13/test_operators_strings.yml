@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          my_name: "ansible"
+  tasks:
+          - name: test operators
+            debug:
+                    msg:
+
+                          - "my_name is lower: {{my_name is lower}}"
+                          - "my_name is upper: {{my_name is upper}}"
+

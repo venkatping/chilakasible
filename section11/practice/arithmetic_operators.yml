@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  vars:
+          x: 25
+          y: 92
+  tasks:
+          - name: working with arithmetic operators
+            debug:
+                    msg:
+                            - "Sum of {{x}} + {{y}} is: {{x+y}}"
+                            - "Sub of {{x}} + {{y}} is: {{x-y}}"
+                            - "Mul of {{x}} * {{y}} is: {{x*y}}"
+                            - "Div of {{x}} / {{y}} is: {{x/y}}"

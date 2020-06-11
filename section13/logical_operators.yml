@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 5
+          y: 7
+          p: [8,10,15]
+  tasks:
+          - name: logical operators
+            debug:
+                    msg:
+                            - "The value of x is: {{x}}, The value of y is: {{y}},The value of p sequence is: {{p}}"
+                            - "x < y: {{x < y}}  y in p: {{y in p}}"
+                            - "x > y: {{x > y and y in p}}"
+                            - "{{(4 > 5) and (5>1) and (5>2) and (9==0) }}"
+                            - "{{(5 > 4) and (4 < 5) and (9 !=0)}}"
+                            - "{{(5 > 4) or (4 < 5) and (9==0)}}"
+                            - "{{ ( 4 > 5) or ( 5 > 10) or ( 9==20)}}"
+                            - "{{not ( 4 > 1)}}"

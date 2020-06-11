@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 45
+          y: 59
+  tasks:
+          - name: working on inline statements
+            debug:
+                    msg:
+                            - "The larger number of {{x}} and {{y}} is: {{x if (x > y) else y}}"
+
+

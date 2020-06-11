@@ -1,0 +1,19 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Install HTTPD
+            yum:
+                    name: httpd
+                    state: present
+            notify:
+                    - start httpd
+  handlers:
+
+          - name: start httpd
+            service:
+                    name: httpd
+                    state: started
+

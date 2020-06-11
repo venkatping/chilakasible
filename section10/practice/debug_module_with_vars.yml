@@ -1,0 +1,18 @@
+---
+ - hosts: localhost
+   become: true
+   become_user: root
+   gather_facts: false
+   vars:
+           x: 35
+           y: 45
+           my_Tech: "Ansible Playbook"
+   tasks:
+           - name: working iwth debug module vars
+             debug:
+                     msg:
+                             - "The value of x defined here is: {{x}}"
+                             - "The value of y defined here is: {{y}}"
+                             - "The sum of {{x}} and {{y}} is: {{x + y}}"
+                             - "My full name is: {{my_Tech}}"
+

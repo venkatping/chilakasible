@@ -1,0 +1,12 @@
+---
+- hosts: one
+  become: true
+  become_user: root
+  vars:
+            motd: "welcome to linux classes\n"
+  tasks:
+          - name: copy the content
+            copy:
+                    content: "{{ motd }}"
+                    dest: /etc/motd
+...

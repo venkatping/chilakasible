@@ -1,0 +1,10 @@
+---
+- hosts: one
+  tasks:
+          - name: ansible loop
+            debug:
+                    msg: "{{ item }}"
+            with_items:
+                    - "hello1"
+                    - "hello2"
+                    - "hello3"

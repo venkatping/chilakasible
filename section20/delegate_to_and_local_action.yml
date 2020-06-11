@@ -1,0 +1,14 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+         - name: executing command
+           shell: "uptime"
+           register: uptime
+         - name: getting output
+           debug:
+                   msg: "{{uptime.stdout}}"
+
+

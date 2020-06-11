@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: This is the first task
+            debug:
+                    msg:
+                            - "This is the first task"
+            tags: one
+          - name: This is the second task
+            debug:
+                    msg:
+                            - "This is the second task"
+            tags: second
+          - name: This is the third task
+            debug:
+                    msg:
+                            - "This is the third task"
+            tags: third
+          - name: This is the fourth task
+            debug:
+                    msg:
+                            - "This is the fourth task"
+            tags: fourth
+          - name: This is the fifth task
+            debug:
+                    msg:
+                            - "This is the fifth task"
+            tags: fifth
+

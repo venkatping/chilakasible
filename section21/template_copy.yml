@@ -1,0 +1,17 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          httpd_port: 8080
+          x: 225
+          y: 342
+  tasks:
+          - name: copying a file to managed node
+            template:
+                    src: example.j2
+                    dest: /tmp/done_with_temp.txt
+
+
+            

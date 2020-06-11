@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          my_path: "/home/ansible/ansible/section13/test_operators.yml"
+          my_link_path: "/home/ansible/ansible/section13/operators.yml"
+  tasks:
+          - name: checking path
+            debug:
+                    msg:
+                            - "The given path is: {{my_path}}"
+                            - "my_path is file: {{my_path is file}}"
+                            - "my_path is directory: {{my_path is directory}}"
+                            - "my_path is exists: {{my_path is exists}}"
+                            - "my_link_path is: {{my_link_path is link}}"
+
+

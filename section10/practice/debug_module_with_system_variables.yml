@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: true
+  tasks:
+          - name: working with debug module with the help of system variables
+            debug:
+                    msg:
+                            - "The inventory hostname is: {{inventory_hostname}}"
+                            - "The ansible distribution is: {{ansible_distribution}}"
+                            - "The ansible bios version is: {{ansible_bios_version}}"
+                            - "The ansible distribution major version is: {{ansible_distribution_major_version}}"
+

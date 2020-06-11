@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: verbosity as default
+            debug:
+                    msg: This is default message
+          - name: verbosity is 2
+            debug:
+                    msg: verbosity is 2
+                    verbosity: 2
+

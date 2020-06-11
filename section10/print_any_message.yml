@@ -1,0 +1,13 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: no
+  tasks:
+          - name: print any message
+            debug:
+                    msg:
+                            - welcome to ansible
+                            - we have to learn ansible
+                            - put effort
+

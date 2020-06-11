@@ -1,0 +1,14 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: no
+  tasks:
+          - name: executing command with shell
+            shell: "bash --version"
+            register: bash_variable
+          - set_fact:
+                  bash_version: "{{bash_variable.stdout.split('\n')[0].split()[3]}}"
+          - name: ouput the variable
+            debug:
+                    var: bash_version

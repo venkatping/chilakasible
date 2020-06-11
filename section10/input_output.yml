@@ -1,0 +1,27 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: no
+  vars:
+          x: 35
+          my_name: "naveen"
+  vars_prompt:
+          - name: y
+            prompt: Enter the value of y
+            private: no
+          - name: username
+            prompt: Enter the Username
+            private: no
+          - name: password
+            prompt: Enter the password
+            private: yes
+
+  tasks:
+          - name: Displaying variables
+            debug:
+                    msg:
+                            - "The x value is: {{x}}"
+                            - "My name is: {{my_name}}"
+                            - "Display {{y}}"
+                            - "The username is: {{username}} and password is: {{password}}"

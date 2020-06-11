@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x:
+                  - 22
+                  - 34
+                  - 57
+          y: 57
+  tasks:
+          - name: Working with comparision operators
+            debug:
+                    msg:
+                            - "The values of x is: {{x}} and the values of y is: {{y}}"
+                            - "y in x: {{y in x}}"
+                            - "y not in x: {{y not in x}}"
+                            - "22 in x: {{22 in x}}"
+                            
+

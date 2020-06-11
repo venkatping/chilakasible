@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 25
+          y: 27
+          p: [25,32,97]
+  tasks:
+          - name: working with conditional statements
+            debug:
+                    msg:
+                            - "The value of x: {{x}} and The value of y: {{y}}"
+            when: x!=y
+          - name: working with conditional statements
+            debug:
+                    msg:
+                            - "The value of x: {{x}} and The value of y: {{y}}"
+            when: x==y
+          - name: working with conditional statements
+            debug:
+                    msg:
+                            - "The value of p: {{p}}"
+            when: "{{x in p}}"
+          - name: working with conditional statements
+            debug:
+                    msg:
+                            - "The value of p: {{p}}"
+            when: "{{x not in p}}"
+
+

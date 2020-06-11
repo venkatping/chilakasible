@@ -1,0 +1,14 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: working with file module
+            file:
+                    path: /home/ansible/file.txt
+                    owner: ansible
+                    group: ansible
+                    mode: 644
+                    state: touch
+

@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: working on debug module
+            #      - debug: msg="welcome to ansible playbooks"
+            debug:
+                    msg:
+                            - "working on ansible {{item}}"
+                            - "working on ansible {{item}}"
+                            - "working on ansible {{item}}"
+            with_items:
+                    - today
+
+

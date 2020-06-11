@@ -1,0 +1,13 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: uncomment listen
+            lineinfile:
+                    path: /home/ansible/httpd.conf
+                    regexp: '(^Listen .*)'
+                    line: '# \1'
+                    backrefs: yes
+                    state: present

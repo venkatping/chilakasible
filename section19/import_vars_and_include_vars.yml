@@ -1,0 +1,9 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  tasks:
+          - include_vars: required_variables_for_{{ansible_os_family}}.yml
+          - debug:
+                  msg: "pkg_name={{pkg}}"
+

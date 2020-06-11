@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - block:
+                   - name: working with block and rescue
+                     command: "ls /home/ansible/ansible/i"
+                     register: ls_out
+                   - debug: var=ls_out
+            rescue:
+                    - debug:
+                            msg:
+                                    "The Given path /home/ansible/ansible/ is not a valid path for suppose then this message will be displayed"
+            always:
+                    - debug:
+                            msg:
+                                    - "This will always execute"
+
+
+

@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Displaying the command line variables
+            debug:
+                    msg:
+                            - "The value of x is: {{x}}"
+                            - "The value of y is: {{y}}"
+                            - "The value of my_name is: {{my_name}}"
+

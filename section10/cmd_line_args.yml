@@ -1,0 +1,16 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: no
+  #  vars:
+  #        x: 45
+  # ansible-playbook cmd_line_args.yml -e "x=22 y=25" -K
+  tasks:
+          - name: Displaying a variable
+            debug:
+                    msg:
+                            - "The Value of X is:{{x}}"
+                            - "The value of Y is:{{y}}"
+
+

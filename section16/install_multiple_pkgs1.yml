@@ -1,0 +1,18 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Installing multiple paackages
+            debug:
+                    msg: "The current pkg is: {{item}}"
+            loop:
+                    - gettext-devel
+                    - perl-CPAN
+                    - perl-devel
+                    - zlib-devel
+                    - openssl-devel
+
+
+

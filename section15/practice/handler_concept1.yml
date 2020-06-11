@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Install httpd
+            yum:
+                    name: httpd
+                    state: present
+            notify:
+                    - start httpd service
+  handlers:
+          - name: start httpd service
+            service:
+                    name: httpd
+                    state: started

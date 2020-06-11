@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  tasks:
+          - name: installing httpd
+            include_tasks: install_webserver_{{ansible_os_family}}.yml
+

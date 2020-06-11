@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 40
+  tasks:
+          - name: test operator
+            debug:
+                    msg:
+                            - "The value of x is: {{x}}"
+                            - "The value of y is: {{y}}"
+            when: y is defined

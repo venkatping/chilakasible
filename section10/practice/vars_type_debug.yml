@@ -1,0 +1,16 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          - x: 25
+          - y: 48.5
+          - my_name: "ansible"
+  tasks:
+          - name: working with types of variables
+            debug:
+                    msg:
+                            - "The value of x is {{x}} and type of x is {{x|type_debug}}"
+                            - "The value of y is {{y}} and type of y is {{y|type_debug}}"
+                            - "The value of my name is {{my_name}} and type of my name is: {{my_name|type_debug}}"

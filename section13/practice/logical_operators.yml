@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x:
+                  - 22
+                  - 47
+                  - 92
+          y: 92
+          p: [22,32,42]
+  tasks:
+          - name: working with logical operators
+            debug:
+                    msg:
+                            - "The values of x: {{x}},The values of y: {{y}},The values of p: {{p}}"
+                            - "{{ (4 > 5) and (5 > 9) and (6 > 4) }}"
+                            - "{{ (9 > 2) and (17 > 4) and (16 > 12)}}"
+                            - "{{ (22 > 3) or (4 > 25) or (2 > 35)}}"
+                            - "{{ (22 < 5) or (35 > 32) and (12 > 4)}}"
+                            - "{{ not (4 > 1)}}"
+
+
+

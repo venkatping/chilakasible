@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 25
+          y: 36
+  tasks:
+          - name: working with comparision operators
+            debug:
+                    msg:
+                            - "{{x>y}}"
+                            - "{{x < y}}"
+                            - "{{x == y}}"
+                            - "{{x != y}}"
+                            - "{{x<=y}}"
+                            - "{{x >= y}}"
+
+

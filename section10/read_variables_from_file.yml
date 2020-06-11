@@ -1,0 +1,23 @@
+---
+- hosts: two
+  vars_files: 
+        - variable_values.yml
+        - variable_values.json
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Displaying variables from a file
+            debug:
+                    msg:
+                            - "{{ pkgs}}"
+                            - "{{ x }}"
+                            - "{{ y }}"
+          - name: Display variables from a file json
+            debug:
+                    msg:
+                            - "{{ p }}"
+                            - "{{ q }}"
+
+
+

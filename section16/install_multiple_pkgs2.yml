@@ -1,0 +1,19 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Installing multiple paackages
+            yum:
+                    name: "{{item}}"
+                    state: present
+            loop:
+                    - gettext-devel
+                    - perl-CPAN
+                    - perl-devel
+                    - zlib-devel
+                    - openssl-devel
+
+
+

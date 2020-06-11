@@ -1,0 +1,40 @@
+---
+- hosts: one
+  become: true
+  become_user: root
+  tasks:
+
+          - name: start and enable the httpd service
+            service:
+                    name: httpd
+                    state: started
+                    enabled: true
+          - name: start and enable the firewalld
+            service:
+                    name: firewalld
+                    enabled: true
+                    state: started
+          - name: permit httpd service at firealld
+            firewalld:
+                    service: http
+                    permanent: true
+                    state: enabled
+                    immediate: yes
+          - name: create simple html webpage
+            copy:
+                     content: "welcome to ansible learning course module\n"
+                     dest: /var/www/html/index.html
+
+          - name: defining webserver name
+            lineinfile:
+                     path: /etc/httpd/conf/httpd.conf
+                     line: ServerName www.apache.naveen.com:80
+                     insertafter: "#Servername"
+          - name: update its entry in /etc/hosts
+            lineinfile:
+                     path: /etc/hosts
+                     line: 192.168.43.206  www.apache.naveen.com
+                    
+
+
+

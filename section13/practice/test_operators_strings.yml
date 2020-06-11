@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars_prompt:
+          - name: x
+            prompt: Enter the value of x
+            private: no
+  tasks:
+          - name: working with test operators
+            debug:
+                    msg:
+                            - "x is lower: {{x is lower}}"
+                            - "x is upper: {{x is upper}}"
+                            - "x upper: {{x|upper}}"
+                            - "x lower: {{x|lower}}"
+
+
+

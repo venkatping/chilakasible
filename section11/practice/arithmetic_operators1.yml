@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 45
+          y: "{{x+5}}"
+  tasks:
+          - name: Working with arithmetic operators
+            debug:
+                    msg:
+                            - "The value of y is: {{y}}"
+
+

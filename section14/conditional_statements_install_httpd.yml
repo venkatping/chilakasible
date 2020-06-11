@@ -1,0 +1,18 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  tasks:
+          - name: Installing httpd
+            yum:
+                    name: httpd
+                    state: present
+            when: ansible_distribution != "Ubuntu"
+
+          - name: Installing apache2
+            apt:
+                    name: apache2
+                    state: present
+            when: ansible_ditribution == "Ubuntu"
+
+

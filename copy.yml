@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  tasks:
+          - name: copy the file
+            copy:
+                   src: /etc/hosts
+                   dest: /tmp/hosts2
+                   owner: unixadm
+                   group: root
+                   mode: 0777

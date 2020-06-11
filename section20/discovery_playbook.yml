@@ -1,0 +1,33 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: finding os name
+            shell: "uname"
+            register: os_name
+          - name: finding uptime
+            shell: "uptime"
+            register: uptime
+          - name: Displaying Discovery info
+            debug:
+                    msg: "{{inventory_hostname}} {{os_name.stdout}} {{uptime.stdout.split(',')[0].split('up')[-1]}}"
+          - name: creating Discovery file
+            copy:
+                    dest: ./Discovery.csv
+                    content: "Server_name, os_name, uptime\n"
+            delegate_to: localhost
+            run_once: true
+          - name: updating csv file
+            lineinfile:
+                    path: ./Discovery.csv
+                    line: "{{inventory_hostname}} {{os_name.stdout}} {{uptime.stdout.split(',')[0].split('up')[-1]}}"
+            delegate_to: localhost
+
+
+
+
+
+
+

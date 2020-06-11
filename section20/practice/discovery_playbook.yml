@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Finding OS name
+            shell: "uname"
+            register: os_name
+          - name: Finding uptime
+            shell: "uptime"
+            register: uptime
+          - name: Displaying discovery information
+            debug:
+                    msg:
+                            - "{{inventory_hostname}} {{os_name.stdout}} {{uptime.stdout.split(',')[0].split('up')[-1]}}"
+
+
+

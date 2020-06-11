@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 5
+          y: 9
+  tasks:
+          - name: working on inline statements
+            debug:
+                    msg:
+                            - "The larger number of {{x}} and {{y}} is: {{x}}"
+            when: x > y
+          - name: working on inline statements
+            debug:
+                    msg:
+                            - "The larger number of {{x}} and {{y}} is: {{y}}"
+            when: y > x

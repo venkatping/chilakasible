@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: user
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: working with loop and item
+            debug:
+                    msg:
+                            - "Display item: {{item}}"
+            with_items:
+                    - httpd
+                    - tree
+                    - apache
+                    - docker
+
+
+

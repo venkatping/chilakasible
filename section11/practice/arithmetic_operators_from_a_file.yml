@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars_files:
+          - variables.yml
+  tasks:
+          - name: working with variables from a file
+            debug:
+                    msg:
+                            - "The Value of x is: {{x}}"
+                            - "The value of y is: {{y}}"
+                            - "The sum of {{x}} + {{y}} is: {{x+y}}"
+

@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Displaying the verbosity
+            debug:
+                    msg:
+                            - "inventory_hostname is: {{inventory_hostname}}"
+                              
+                    verbosity: 2

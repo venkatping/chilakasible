@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: working with ignore errors
+            shell: "ls -ltr /home"
+            register: home_out
+            ignore_errors: yes
+          - name: displaying ouput
+            debug: var=home_out.stdout.split("\n")
+          - name: working with ignore errors
+            shell: "pwd"
+            register: pwd_out
+          - name: Displaying variable
+            debug: var=pwd_out.stdout.split("\n")
+
+

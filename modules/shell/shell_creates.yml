@@ -1,0 +1,11 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: working with shell creates
+            shell:
+                    chdir: /home/ansible/
+                    cmd: ls -ltr > file.txt
+                    creates: file.txt

@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  tasks:
+          - name: Finding uptime
+            shell: "uptime"
+            register: up_time
+          - name: Displaying discovery information
+            debug:
+                    msg:
+                            - "{{inventory_hostname}},{{ansible_os_family}},{{ansible_system}},{{ansible_distribution}},{{up_time.stdout.split(',')[0].split('up')[-1]}}"
+          - name: Removing old discovery.csv file
+            file:
+                    dest: ./Discovery.csv
+                    state: absent
+            delegate_to: localhost
+            run_once: yes
+          - name: creating Discovery.csv file with header
+            copy:
+                    dest: ./Discovery.csv
+                    content: "ServerName,OS_Family,OS_Name,Distribution,Uptime\n"
+            delegate_to: localhost
+            run_once: yes
+          - name: Updating Discovery.csv file
+            lineinfile:
+                    path: ./Discovery.csv
+                    line: "{{inventory_hostname}},{{ansible_os_family}},{{ansible_system}},{{ansible_distribution}},{{up_time.stdout.split(',')[0].split('up')[-1]}}"
+                    state: present
+            delegate_to: localhost
+
+

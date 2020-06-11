@@ -1,0 +1,15 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: lineinfile
+            lineinfile:
+                    path: /home/ansible/httpd.conf
+                    regexp: "Loglevel debug"
+                    line: "LogLevel warn"
+                    state: present
+            register: output
+          - debug:
+                  msg: "{{output}}"

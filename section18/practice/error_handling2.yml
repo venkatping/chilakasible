@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          # - name: working with failed when
+          # command: "ls /home"
+          # register: home
+          # failed_when: home.rc==0
+          #- debug: var=home
+          - name: working with failed when
+            command: "pwd"
+            register: out
+          - fail:
+                  msg: failed because rc equal to 0
+            when: out.rc==0
+
+

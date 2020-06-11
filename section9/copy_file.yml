@@ -1,0 +1,24 @@
+---
+- hosts: one
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: copy web.yml file to ONE
+            copy:
+                    src: /home/ansible/ansible/section9/web.yml
+                    dest: /home/ansible
+          - name: Creating file with some content
+            file:
+                    dest: /home/ansible/testfile.txt
+                    state: touch
+                    content: This is my sample file
+          - name: inserting some content in already created file
+            copy:
+                    dest: /home/ansible/testfile.txt
+                    content: where is my sample file
+          - name: install httpd
+            yum:
+                    name: httpd
+                    state: latest
+

@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  vars:
+          x: "This is my Ansible Training"
+          y: 38
+          z: [38,42,75,67]
+  tasks:
+          - name: working with filters
+            debug:
+                    msg:
+                            - "{{x|lower}}"
+                            - "{{x|upper}}"
+                            - "{{x.lower()}}"
+                            - "{{y|type_debug}}"
+                            - "{{x|title}}"
+                            - "{{y|int}}"
+                            - "The max in z: {{z|max}}"
+                            - "The min in z: {{z|min}}"
+                            - "{{x.split()}}"
+

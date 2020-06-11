@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 25
+  tasks:
+          - name: Test Operators
+            debug:
+                    msg:
+                            - "x is Defined: {{x is defined}}"
+                            - "y is Defined: {{y is defined}}"
+                            - "x is undefined: {{x is undefined}}"
+                            - "y is undefined: {{y is undefined}}"
+                            - "x is divisibleby 2: {{x is divisibleby 2}}"
+
+
+
+
+
+

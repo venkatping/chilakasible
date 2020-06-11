@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: "This is about ansible filters and methods"
+          y: "56"
+          z: [4,5,6,38,0]
+  tasks:
+          - name: Displaying the variable x
+            debug:
+                    msg:
+                            - "{{x|lower}}"
+                            - "{{x|upper}}"
+                            - "{{x|title}}"
+                            - "{{x.lower()}}"
+                            - "{{y|int}}"
+                            - "The max from z is: {{z|max}}"
+                            - "The min from z is: {{z|min}}"
+                            - "{{x.split()}}"

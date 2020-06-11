@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  tasks:
+          - name: vsftpd enable and running
+            service:
+                    name: vsftpd
+                    state: started
+                    enabled: true
+          - name: firewalld running
+            service:
+                     name: firewalld
+                     state: started
+                     enabled: true
+

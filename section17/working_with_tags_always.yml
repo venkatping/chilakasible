@@ -1,0 +1,47 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: First task
+            debug:
+                    msg:
+                            - "This is First task"
+            tags: 
+                - one
+                - common
+                - always
+
+          - name: Second task
+            debug:
+                    msg:
+                            - "This is Second task"
+            tags: 
+                - second
+                - never
+          - name: Third task
+            debug:
+                    msg:
+                            - "This is Third task"
+            tags: 
+                - third
+                - never
+          - name: Fourth task
+            debug:
+                    msg:
+                            - "This is Fourth task"
+            tags: 
+                - fourth
+                - common
+          - name: Fifth task
+            debug:
+                    msg:
+                            - "This is Fifth task"
+            tags: 
+                - fifth
+                - never
+
+
+
+

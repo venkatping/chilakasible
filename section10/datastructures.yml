@@ -1,0 +1,42 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: no
+  vars:
+          x: 34
+          #          pkgs: ['vim', 'nano','httpd','nginx']
+          pkgs:
+                  - 'vim'
+                  - 'nano'
+                  - 'httpd'
+                  - 'nginx'
+          web_servers: {'Linux': 'httpd', 'ubuntu': 'apache2'}
+          web_server: 
+                'Linux': 'httpd'
+                'ubuntu': 'apache2'
+  tasks:
+          - name: displaying variable x
+            debug:
+                   var: x
+          - name: Display pkgs which has multiple pkgs
+            debug:
+                    var: pkgs[0]
+          - name: displaying web servers
+            debug:
+                    var: web_servers
+          - name: displaying keys in web server
+            debug:
+                    var: web_server.keys()
+          - name: Display value of Linux_key
+            debug:
+                    var: web_server['Linux']
+          - name: Display value of Ubuntu_key
+            debug:
+                    var: web_server['ubuntu']
+          - name: Another way of displaying the value of a key
+            debug:
+                    var: web_server.get('Linux')
+
+
+

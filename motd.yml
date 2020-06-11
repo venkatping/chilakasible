@@ -1,0 +1,13 @@
+---
+
+- hosts: one
+  become: true
+  become_user: root
+  tasks:
+          - name: configure motd
+            copy:
+                    src: centos_motd
+                    dest: /etc/
+
+...
+

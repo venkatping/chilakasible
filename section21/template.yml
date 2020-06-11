@@ -1,0 +1,17 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  tasks:
+          - name: Installing httpd
+            yum:
+                    name: httpd
+                    state: present
+          - template:
+                  src: index.html.j2
+                  dest: /usr/share/httpd/noindex/index.html
+          - name: starting httpd service
+            service:
+                    name: httpd
+                    service: started
+

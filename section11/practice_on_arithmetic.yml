@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 45
+          y: "{{x+5}}"
+  tasks:
+          - name: additing some value to x and displaying that value with y
+            debug:
+                    msg:
+                            - "The value of y is: {{y}}"

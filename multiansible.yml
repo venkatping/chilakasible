@@ -1,0 +1,33 @@
+---
+- hosts: one
+  become: true
+  become_user: root
+  tasks:
+          - name: Mount The OS Media Drive
+            command: mount /dev/sr0 /mnt
+          - name: copy The Local repo file
+            copy:
+                    src: /home/ansible/server.repo
+                    dest: /etc/yum.repos.d
+          - name: Install The vsftpd package
+            yum:
+                      name: vsftpd
+                      state: latest
+
+          - name: Install httpd package
+            yum:
+                      name: httpd
+                      state: latest
+
+          - name: enable the service
+            service:
+                      name: httpd
+                      state: started
+                      enabled: true
+
+          - name: enable the vsftpd service
+            service:
+                      name: vsftpd
+                      state: started
+                      enabled: true
+

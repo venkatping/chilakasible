@@ -1,0 +1,15 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  tasks:
+          - name: install multiple packages with variables
+            yum:
+                    name: "{{ packages }}"
+                    state: installed
+            vars:
+                    packages:
+                            - httpd
+                            - vsftpd
+
+                   

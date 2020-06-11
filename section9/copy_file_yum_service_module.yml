@@ -1,0 +1,46 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: copying file from mymachine to client
+            copy:
+                    src: /home/ansible/ansible/section9/web.yml
+                    dest: /home/ansible
+                    owner: ansible
+                    group: ansible
+                    mode: 644
+
+          - name: copying file from cleint to client with remote src
+            copy:
+                    src: /home/ansible/
+                    dest: /home/ansible/test
+                    remote_src: yes
+          - name: inserting content in already created file
+            copy:
+                    dest: /home/ansible/my_file.txt
+                    content: "inserting some content in already created file"
+                    mode: 644
+                    owner: ansible
+                    group: ansible
+          - name: inserting some content in already created file
+            file:
+                    path: /home/ansible/my_file1.txt
+                    content: inserting with file module
+                    mode: 644
+                    state: file
+          - name: inserting some content and creating new file at same time
+            file:
+                    path: /home/ansible/file_created.txt
+                    state: touch
+                    content: inserting some content with file module
+          - name: installing httpd package
+            yum:
+                    name: httpd
+                    state: latest
+          - name: starting httpd service
+            service:
+                    name: httpd
+                    state: started
+

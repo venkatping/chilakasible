@@ -1,0 +1,34 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: get the bash version
+            shell: bash --version
+            register: bash_variable
+          - name: Displaying the bash_variable
+            debug:
+                    msg:
+                            - "{{bash_variable.stdout}}"
+                            - "{{bash_variable.get('stdout')}}"
+                            - "{{bash_variable['stdout']}}"
+                            - "{{bash_variable.stdout.split('\n')}}"
+                            - "{{bash_variable.stdout.split('\n')[0]}}"
+                            - "Dsiplaying version: {{bash_variable.stdout.split('\n')[0].split()[3]}}"
+          - name: To Define a variable inbetween the yml file we are using set_fact
+            set_fact:
+                    bash_version: "{{bash_variable.stdout.split('\n')[0].split()[3]}}"
+          - name: displaying bash version
+            debug:
+                    msg:
+                            - "Displaying bash version using set_fact: {{bash_version}}"
+
+                    
+
+
+
+
+
+
+

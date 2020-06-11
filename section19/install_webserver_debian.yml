@@ -1,0 +1,6 @@
+---
+ - name: Installing webserver in Debian
+   yum:
+           name: apache2
+           state: present
+

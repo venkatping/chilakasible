@@ -1,0 +1,15 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Executing shell command
+            shell: ls -ltr
+            args:
+                    chdir: /home/ansible
+            register: shell_out
+          - name: Displaying output
+            debug:
+                    msg: "{{shell_out.stdout}}"
+

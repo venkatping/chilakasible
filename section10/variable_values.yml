@@ -1,0 +1,9 @@
+---
+ x: 45
+ y:
+         - 4
+         - 5
+         - "ansible"
+ pkgs:
+         "Linux": "httpd"
+         "Ubuntu": "apache2"

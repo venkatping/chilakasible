@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  tasks:
+          - name: working with conditional statements
+            yum:
+                    name: httpd
+                    state: present
+            when: ansible_distribution != 'Ubuntu'
+          - name: working with conditional statements
+            yum:
+                    name: apache2
+                    state: present
+            when: ansible_distribution == 'Ubuntu'
+

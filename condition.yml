@@ -1,0 +1,9 @@
+---
+- hosts: one
+  become: true
+  become_user: root
+  tasks:
+          - name: shutdown centos 7
+            command: poweroff
+            when: (ansible_os_family == "RedHat" and ansible_distribution_major_version == '7') or (ansible_os_family == "centOS" and ansible_distribution_major_version == '6')
+

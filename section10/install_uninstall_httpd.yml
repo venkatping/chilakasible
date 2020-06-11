@@ -1,0 +1,10 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: no
+  tasks:
+          - name: working with {{pkg}}
+            yum:
+                    name: "{{pkg}}"
+                    state: "{{req_state}}"

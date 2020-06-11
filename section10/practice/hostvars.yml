@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: Displaying inventory_hostname with var
+            debug:
+                    var: inventory_hostname
+          - name: Displaying the inventory_hostname with msg
+            debug:
+                    msg:
+                            - "Displaying the inventory_hostname: {{inventory_hostname}}"
+          - name: Displaying the hostvars with msg
+            debug:
+                    msg:
+                            - "Displaying the hostvars: {{hostvars}}"
+          - name: Displaying the hostvars with var
+            debug:
+                    var: hostvars
+          - name: Displaying the hostvars of particular sever
+            debug:
+                    msg:
+                            - "Displaying the hostvars of localhost: {{hostvars[inventory_hostname]}}"
+          - name: Displaying the hostvars with var
+            debug:
+                    var: hostvars[inventory_hostname]
+
+
+
+
+

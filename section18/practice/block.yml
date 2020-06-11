@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - block:
+                  - command: "ls /home/ansible/ansible/section11/"
+                    register: section12_out
+                  - command: "ls /home/ansible/ansible/section12/"
+                    register: section13_out
+                  - command: "ls /home/ansible/ansible/section13/"
+                    register: section14_out
+            ignore_errors: yes
+          - debug: var=section12_out
+          - debug: var=section13_out
+          - debug: var=section14_out
+

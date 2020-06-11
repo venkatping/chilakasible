@@ -1,0 +1,16 @@
+---
+ x: 45
+ y:
+         - 46
+         - 73
+         - 60
+         - 915
+ a: [74,91,64]
+
+ distributions:
+         
+                - Linux
+                - Ubuntu
+                - Redhat
+                - Ansible
+ pkgs: [ "httpd apache","git"]

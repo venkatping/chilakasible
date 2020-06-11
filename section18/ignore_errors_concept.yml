@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - block:
+                - name: Executing a command
+                  command: "ls /home/ansible/"
+                  register: out
+                - name: Executiing another command
+                  command: " ls /home/ansible/ansible/section14"
+                  register: section14_out
+            ignore_errors: yes
+          - debug: var=out
+          - debug: var=section14_out
+
+

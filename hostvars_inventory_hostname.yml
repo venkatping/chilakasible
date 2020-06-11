@@ -1,0 +1,8 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  tasks:
+          - name: Displaying inventory hostname
+            debug:
+                    var: inventory_hostname

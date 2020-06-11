@@ -1,0 +1,14 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  vars_files:
+          - my_vars.yml
+  tasks:
+          - name: Reading variables from a file
+            debug:
+                    msg:
+                            - "The X variable is: {{x}}"
+                            - "The Y variable is: {{y}}"
+

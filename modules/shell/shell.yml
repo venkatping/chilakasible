@@ -1,0 +1,14 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: using shell module
+            shell:
+                    cmd: cat /etc/redhat-release
+            register: shell_out
+          - name: displaying output
+            debug:
+                    msg: "{{shell_out.stdout}}"
+

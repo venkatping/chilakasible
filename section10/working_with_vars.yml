@@ -1,0 +1,18 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 25
+          my_name: Naveen
+          my_num: 25.28
+  tasks:
+          - name: printing an variable
+            debug:
+                    msg:
+                            - "The value of x is: {{x}} and type is {{x|type_debug}}"
+                            - "My number is: {{my_num}} and type is: {{my_num|type_debug}} "
+                            - "My Name is: {{my_name}} and name is: {{my_name|type_debug}}"
+                     
+

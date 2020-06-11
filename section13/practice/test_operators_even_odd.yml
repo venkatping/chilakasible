@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 25
+          y: 42
+  tasks:
+          - name: working with test operators
+            debug:
+                    msg:
+                            - "x is even: {{x is even}}"
+                            - "y is odd: {{y is odd}}"
+                            - "z is undefined: {{z is undefined}}"
+                            - "x is number: {{x is number}}"
+
+
+

@@ -1,0 +1,46 @@
+---
+- hosts: one
+  become: true
+  become_user: root
+  vars:
+         web_pkg: httpd
+         web_service: httpd
+         firewall_pkg: firewalld
+         perl_pkg: perl
+         rule: http
+  tasks:
+         - name: Mount the OS Media Drive
+           command: mount /dev/sr0 /mnt
+         - name: copy the local repo file
+           copy:
+                   src: /home/ansible/server.repo
+                   dest: /etc/yum.repos.d
+         - name: Install package
+           yum:
+                   name:
+                           - "{{ web_pkg }}"
+                           - "{{ firewall_pkg }}"
+                           - "{{ perl_pkg }}"
+                   state: latest
+         - name: start the httpd service
+           service:
+                   name: httpd
+                   state: started
+                   enabled: true
+         - name: start the firewalld service
+           service:
+                   name: firewalld
+                   state: started
+                   enabled: true
+         - name: insert content in index.html
+           copy:
+                   content: welcome to ansible classes
+                   dest: /var/www/html/index.html
+         - name: open the port for {{ rule }}
+           firewalld:
+                    service: "{{ rule }}"
+                    permanent: true
+                    immediate: true
+                    state: enabled
+
+

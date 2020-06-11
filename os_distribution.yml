@@ -1,0 +1,19 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  tasks:
+          - name: Finding OS distribution
+            shell: "cat /etc/os-release | awk -F '[= ]' 'NR==1 {print $2}'| tr '\"' ' '"
+            register: os_dist
+          - name: Finding os name
+            shell: "uname"
+            register: os_name
+          - name: printing a message
+            debug:
+                    msg:
+                            - "The os distribution name is: {{os_dist.stdout}}"
+                            - "The os name is: {{os_name.stdout}}"
+                            - "The mount points are: {{ansible_mounts}}"
+                            - "The ansible shell is: {{ansible_user_shell}}"
+

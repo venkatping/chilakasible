@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: working with handlers
+            yum:
+                    name: httpd
+                    state: present
+            register: out
+          - name: start httpd
+            service:
+                    name: httpd
+                    state: started
+            when: out.changed == true
+
+

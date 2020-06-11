@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  gather_facts: false
+  vars_prompt:
+          - name: x
+            prompt: Please enter x variable value
+            private: no
+          - name: y
+            prompt: Please Enter Y variable value
+            private: no
+  tasks:
+          - name: Displaying a variable with vars prompt
+            debug:
+                    msg:
+                            - "The value of x is: {{x}}"
+                            - "The Value of y is: {{y}}"
+                            - "The value of x and y is: {{x+y}}"
+

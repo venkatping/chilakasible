@@ -1,0 +1,50 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 25
+          pkgs: ['vim','nano','httpd','nginx']
+          pkgs1:
+                  - 'httpd'
+                  - 'tree'
+                  - 'httpd'
+                  - 'nginx'
+          web_servers: [ 'Linux' : 'httpd' , 'Ubuntu': 'apache2' ]
+          web_servers1:
+                  'Linux' : 'httpd'
+                  'Ubuntu' : 'apache2'
+
+  tasks:
+          - name: displaying the variables
+            debug:
+                    msg:
+                            - "The value of x is: {{x}}"
+                            - "The variables in pkgs is: {{pkgs}}"
+          - name: Displaying the variable pkgs
+            debug:
+                    var=pkgs
+          - name: Displaying the variables
+            debug:
+                    msg:
+                            - "The variables in webservers: {{web_servers}}"
+                            - "The variables in webservers: {{web_servers1}}"
+          - name: Displaying the specific variables 
+            debug:
+                    msg:
+                            - "Displaying the specific package: {{pkgs[0]}}"
+                            - "Displaying the specific packages: {{pkgs[0],pkgs[1]}}"
+          - name: Displaying the keys in webservers
+            debug:
+                    var: web_servers1.keys()
+          - name: Displaying the keys with msg in webservers
+            debug:
+                    msg:
+                            - "Displaying the keys in web_servers1: {{web_servers1.keys()}}"
+                            - "Displaying the key value of Linux in web_servers1: {{web_servers1['Linux']}}"
+          - name: Displaying the keys in webservers
+            debug:
+                    msg:
+                            - "Displaying the key values of Ubuntu in web_servers1: {{web_servers1.get('Ubuntu')}}"
+

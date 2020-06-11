@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+          - name: working with item and loop
+            yum:
+                      name: "{{item}}"
+                      state: present
+            loop:
+                    - httpd
+                    - tree
+                    - apache2
+                    - docker
+
+

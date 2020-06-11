@@ -1,0 +1,17 @@
+---
+
+- hosts: one
+  become: true
+  become_user: root
+  tasks:
+          - name: Install a package
+            yum:
+                    name: httpd
+                    state: latest
+
+
+#latest:- to update an package
+#removed: to remove a package
+#installed:- to install a package
+#present: to install a package
+#absent:- to uninstall a package

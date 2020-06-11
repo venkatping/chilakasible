@@ -1,0 +1,13 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  tasks:
+          - name: inserting line in httpd file
+            lineinfile:
+                    path: /home/ansible/httpd.conf
+                    regexp: '(^ServerAdmin .*)'
+                    line: '# \1'
+                    state: present
+                    backrefs: yes
+

@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 49
+  tasks:
+          - name: test operators
+            debug:
+                    msg:
+
+                          - "X is divisble by 2 {{x is divisibleby 2}}"
+                          - "x is even: {{x is even}}"
+                          - "x is odd: {{x is odd}}"
+                          - "x is number: {{x is number}}"

@@ -1,0 +1,20 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          x: 6
+          y: 10
+  tasks:
+          - name: comparision operators
+            debug:
+                    msg:
+                            - "x == y: {{x==y}}"
+                            - "x != y: {{x != y}}"
+                            - "x < y: {{x < y }}"
+                            - "x > y: {{x > y }}"
+                            - "x <= y: {{x<=y}}"
+                            - "x >= y: {{x >= y}}"
+
+                             
