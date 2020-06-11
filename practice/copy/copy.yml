@@ -1,0 +1,17 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  gather_facts: false
+  vars:
+          src: "/home/ansible/server.repo"
+          dest: "/home/ansible"
+  tasks:
+          - name: copying single file
+            copy:
+                    src: "{{src}}"
+                    dest: "{{dest}}"
+                    owner: ansible
+                    group: ansible
+                    when: ansible_distribution == "CentOS"
+

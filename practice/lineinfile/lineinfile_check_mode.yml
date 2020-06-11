@@ -1,0 +1,18 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  tasks:
+          - name: working with lineinfile
+            lineinfile:
+                    path: /home/ansible/httpd.conf
+                    line: "LogLevel debug"
+                    backup: yes
+                    state: absent
+            register: out
+            check_mode: yes
+          - name: displaying the output
+            debug:
+                    msg:
+                            - "The output is: {{out}}"
+

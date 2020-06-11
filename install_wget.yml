@@ -1,0 +1,7 @@
+---
+ - hosts: one
+   become: true
+   tasks:
+   - yum: name=wget state=latest
+   - yum: name=wget state=latest
+   

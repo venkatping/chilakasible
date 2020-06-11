@@ -1,0 +1,12 @@
+---
+- hosts: one
+  become: true
+  become_user: root
+  tasks:
+          - name: install below packages
+            yum:
+                    name:
+                      - httpd,vsftpd
+                    state: latest  
+          
+

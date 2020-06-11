@@ -1,0 +1,16 @@
+---
+- hosts: two
+  become: true
+  become_user: root
+  tasks:
+          - name: copy multiple files
+            copy:
+                    src: "{{item}}"
+                    dest: /tmp/
+                    owner: ansible
+                    group: ansible
+                    mode: 0777
+            when: ansible_distribution == "CentOS"
+            with_items:
+                    - /home/ansible/server.repo
+                    - /home/ansible/vscode.yml

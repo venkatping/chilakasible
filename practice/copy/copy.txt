@@ -1,0 +1,14 @@
+#ansible -m copy -a "src=/home/ansible/server.repo dest=/home/ansible" two -k
+
+#ansible -m copy -a "src=/home/ansible/server.repo dest=/home/ansible owner=ansible group=ansible mode=777" two -K
+
+#ansible -m copy -a "src=/home/ansible/server.repo dest=/home/ansible owner=ansible group=ansible mode=777 backup=yes" two -K
+
+Note:-if i give backup,if there is any changes in that file then backup file will be created or else it will not created
+
+#ansible -m copy -a "src=/home/ansible/server.repo dest=/home/ansible/hi.txt follow=yes" two -K
+Note:-if i give follow=yes,server.repo will become hi.txt and it is something like overwritten/renaming the file
+
+#ansible -m copy -a "src=/home/ansible/server.repo dest=/home/ansible/ follow=no" two -K
+Note:-if i give follow=no,then server.repo will be copied to that directory
+
